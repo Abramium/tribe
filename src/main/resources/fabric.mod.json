@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "tribe",
+  "version": "${version}",
+  "license": "BSD-3-Clause",
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      "ru.abramium.tribe.core"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
