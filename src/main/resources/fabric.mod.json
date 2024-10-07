@@ -6,7 +6,7 @@
   "environment": "server",
   "entrypoints": {
     "server": [
-      "ru.abramium.tribe.core"
+      "ru.abramium.tribe"
     ]
   },
   "depends": {

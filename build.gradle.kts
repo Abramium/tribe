@@ -16,15 +16,19 @@ repositories {
 
 dependencies {
     mappings(loom.officialMojangMappings())
-    implementation("org.clojure:clojure:latest.release")
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
+
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    implementation("org.clojure:clojure:latest.release")
+    include("org.clojure:clojure:latest.release")
+    include("org.clojure:core.specs.alpha:0.4.74")
+    include("org.postgresql:postgresql:42.7.4")
+    include("org.clojure:spec.alpha:0.5.238")
 
     compileOnly("net.luckperms:api:5.4")
+    implementation("org.clojure:java.jdbc:0.7.12")
     implementation("org.postgresql:postgresql:42.7.4")
-    implementation("com.github.seancorfield:next.jdbc:1.3.939")
-    implementation("com.github.seancorfield:honeysql:2.6.1147")
     implementation("org.clojure:tools.logging:1.2.3")
     implementation("org.clojure:data.json:2.4.0")
 }
@@ -51,6 +55,7 @@ tasks.withType<JavaCompile> {
 clojure {
     builds {
         named("main") {
+            compiler.directLinking.set(true)
             classpath.setFrom(sourceSets["main"].compileClasspath)
             aotAll()
         }
